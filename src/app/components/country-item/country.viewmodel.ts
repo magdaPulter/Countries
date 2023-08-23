@@ -1,4 +1,4 @@
-export interface CountryModel {
+export interface CountryViewModel {
     readonly name: string;
     readonly population: number;
     readonly region: string;
