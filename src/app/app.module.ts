@@ -7,6 +7,7 @@ import { MainComponent } from './components/main/main.component';
 import { CountriesListComponent } from './components/countries-list/countries-list.component';
 import { CountryItemComponent } from './components/country-item/country-item.component';
 import { MatCardModule } from '@angular/material/card';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MatCardModule } from '@angular/material/card';
     MainComponent,
     CountryItemComponent,
     CountriesListComponent,
-    MatCardModule
+    MatCardModule,
+    NavbarComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
