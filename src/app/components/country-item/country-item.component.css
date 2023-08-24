@@ -1,4 +1,21 @@
 .card{
     width: 320px;
     height: 450px;
+    position: relative;
+    margin: 40px 0px 
+}
+
+h3{
+    font-weight: bold;
+}
+
+.content{
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+}
+
+span{
+    font-weight: 20;
+    color: rgb(143, 141, 141);
 }
