@@ -14,3 +14,8 @@ h3{
     bottom: 50px;
     left: 20px;
 }
+
+span{
+    font-weight: 20;
+    color: rgb(143, 141, 141);
+}
