@@ -1,6 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { CountriesListComponent } from '../countries-list/countries-list.component';
+import { CountriesService } from '../../service/countries.service';
+
 
 @Component({
   selector: 'app-main',
@@ -10,6 +14,19 @@ import { CountriesListComponent } from '../countries-list/countries-list.compone
   imports: [CommonModule, CountriesListComponent]
 })
 export class MainComponent {
+
+
+  constructor(private _countriesService: CountriesService) {
+  }
+
+
+
+
+  // constructor(private _countriesService: CountriesService) {
+  // this.form.controls['search'].valueChanges
+  // .pipe(tap(console.log)).subscribe()
+
+
 
 
 }
