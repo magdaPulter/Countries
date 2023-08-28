@@ -3,3 +3,18 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+input{
+    border: none;
+}
+
+input:focus {
+    outline: none;
+  }
+
+.filter{
+    display: flex;
+    justify-content: start;
+    /* background-color: white; */
+  
+}

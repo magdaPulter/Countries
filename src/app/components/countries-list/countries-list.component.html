@@ -1,7 +1,12 @@
 
+<div class="filter">
+    <mat-icon>search</mat-icon>
+    <form [formGroup]="form">
+        <input  type="search" formControlName="search" placeholder="Search for a country">
+    </form>
+</div>
 
-<div class="country-list">
-    <app-country-item  *ngFor="let country of countries$ | async" [country]="country">
-
+<div class="country-list"> 
+    <app-country-item  *ngFor="let country of searchedCountry$ | async" [country]="country">
     </app-country-item>
 </div>
