@@ -1,3 +1,9 @@
+.filters{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
 .country-list{
     display: flex;
     flex-wrap: wrap;
@@ -12,9 +18,43 @@ input:focus {
     outline: none;
   }
 
-.filter{
+.search-filter{
     display: flex;
-    justify-content: start;
-    /* background-color: white; */
-  
+    background-color: white;
+    width: 35%;
+    height: 45px;
+}
+
+.search-filter mat-icon{
+    margin: 10px 15px;    
+}
+.search-filter form{
+    margin: 10px 5px;    
+}
+
+.region-filter {
+    display: flex;
+    border: none;
+    width: 100%;
+    background-color: white;
+    cursor: pointer;
+}
+
+.region-filter mat-icon{
+    padding: 5px;
+}
+
+.region-filter p{
+    padding: 10px;
+}
+
+.region-container{
+    width: 200px;
+    margin-bottom: 5px;
+    background-color: white;
+}
+
+.region-container p{
+    cursor: pointer;
+    padding-left: 20px;
 }
