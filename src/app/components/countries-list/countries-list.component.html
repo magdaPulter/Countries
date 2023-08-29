@@ -1,13 +1,24 @@
-
-<div class="filter">
-    <mat-icon>search</mat-icon>
-    <form [formGroup]="form">
-        <input type="search" formControlName="search" placeholder="Search for a country">
-    </form>
-</div>
-
-<div *ngFor="let region of region$ | async">
-   <p (click)="onRegionClicked(region)">{{region}}</p> 
+<div class="filters">
+    <div class="search-filter">
+        <mat-icon>search</mat-icon>
+        <form [formGroup]="form">
+            <input type="search" formControlName="search" placeholder="Search for a country...">
+        </form>
+    </div>
+    <div>
+        <div class="region-container">
+            <button class="region-filter">
+                <p>Filter by region</p> 
+                <mat-icon>keyboard_arrow_down</mat-icon>
+                <mat-icon>keyboard_arrow_up</mat-icon>
+            </button>
+        </div>
+        <div class="region-container">
+            <div *ngFor="let region of region$ | async">
+                <p (click)="onRegionClicked(region)">{{region}}</p> 
+             </div>
+        </div>
+    </div>
 </div>
 
 <div class="country-list"> 
