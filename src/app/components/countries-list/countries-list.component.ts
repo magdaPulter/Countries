@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { Observable, Subject, combineLatest, map, shareReplay, startWith, BehaviorSubject } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { Observable, combineLatest, map, shareReplay, startWith, BehaviorSubject } from 'rxjs';
 import { CountryItemComponent } from '../country-item/country-item.component';
 import { CountryModel } from '../../models/country.model';
 import { CountriesService } from '../../service/countries.service';
@@ -34,12 +33,13 @@ export class CountriesListComponent {
     this.filteredRegion$
   ]).pipe(
     map(([countries, searchedForm, filteredRegion]) => {
-      if(filteredRegion === '') {
+      if(filteredRegion === '' && searchedForm.search === '') {
         return countries
-      } 
-      return countries
-      .filter(country => country.name.toLowerCase().includes(searchedForm.search.toLowerCase()))
-      .filter(country => country.region === filteredRegion)
+      } else {
+        return countries
+        .filter(country => searchedForm.search !== '' ? country.name.toLowerCase().includes(searchedForm.search.toLowerCase()) : true)
+        .filter(country => filteredRegion !== '' ?  country.region === filteredRegion : true)
+      }
     }))
 
   readonly region$: Observable<string[]> = this.countries$
