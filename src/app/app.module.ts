@@ -8,6 +8,7 @@ import { CountriesListComponent } from './components/countries-list/countries-li
 import { CountryItemComponent } from './components/country-item/country-item.component';
 import { MatCardModule } from '@angular/material/card';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { PopulationPipe } from './pipes/population.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CountryItemComponent,
     CountriesListComponent,
     MatCardModule,
-    NavbarComponent
+    NavbarComponent,
+    PopulationPipe
   ],
   providers: [],
   bootstrap: [AppComponent]

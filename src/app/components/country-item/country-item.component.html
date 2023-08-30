@@ -2,7 +2,7 @@
     <img width="100%" mat-card-image src={{country.flags.svg}} alt="country flag">
     <mat-card-content class="content">
         <h3>{{country.name}}</h3>
-        <p>Population: <span>{{country.population}}</span></p>
+        <p>Population: <span>{{ country.population | population }}</span></p>
         <p>Region: <span>{{country.region}}</span></p>
         <p>Capital: <span>{{country.capital}}</span></p>
     </mat-card-content>
