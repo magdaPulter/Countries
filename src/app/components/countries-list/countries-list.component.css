@@ -10,8 +10,14 @@
     justify-content: space-around;
 }
 
-input{
+.search-filter form{
+    width: 100%;
+}
+
+.search-filter input{
     border: none;
+    width: 95%;
+    background-color: white
 }
 
 input:focus {
@@ -21,7 +27,7 @@ input:focus {
 .search-filter{
     display: flex;
     background-color: white;
-    width: 35%;
+    width: 35vw;
     height: 45px;
 }
 
