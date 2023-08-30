@@ -34,12 +34,13 @@ export class CountriesListComponent {
     this.filteredRegion$
   ]).pipe(
     map(([countries, searchedForm, filteredRegion]) => {
-      if(filteredRegion === '') {
+      if(filteredRegion === '' && searchedForm.search === '') {
         return countries
-      } 
-      return countries
-      .filter(country => country.name.toLowerCase().includes(searchedForm.search.toLowerCase()))
-      .filter(country => country.region === filteredRegion)
+      } else {
+        return countries
+        .filter(country => searchedForm.search !== '' ? country.name.toLowerCase().includes(searchedForm.search.toLowerCase()) : true)
+        .filter(country => filteredRegion !== '' ?  country.region === filteredRegion : true)
+      }
     }))
 
   readonly region$: Observable<string[]> = this.countries$
