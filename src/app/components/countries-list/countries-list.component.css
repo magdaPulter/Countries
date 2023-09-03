@@ -2,12 +2,14 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    position: relative;
 }
 
 .country-list{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    z-index: 0;
 }
 
 .search-filter form{
@@ -58,6 +60,13 @@ input:focus {
     width: 200px;
     margin-bottom: 5px;
     background-color: white;
+}
+
+.search-region-filter{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
 }
 
 .region-container p{

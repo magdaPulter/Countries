@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { Observable, combineLatest, map, shareReplay, startWith, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, combineLatest, map, shareReplay, startWith, take, tap } from 'rxjs';
 import { CountryItemComponent } from '../country-item/country-item.component';
+import { SelectCategoryDirective } from '../../directives/select-category.directive';
 import { CountryModel } from '../../models/country.model';
 import { CountriesService } from '../../service/countries.service';
 
@@ -13,7 +14,7 @@ import { CountriesService } from '../../service/countries.service';
   templateUrl: './countries-list.component.html',
   styleUrls: ['./countries-list.component.css'],
   standalone: true,
-  imports: [CountryItemComponent, CommonModule, MatIconModule, MatInputModule, ReactiveFormsModule]
+  imports: [CountryItemComponent, CommonModule, MatIconModule, MatInputModule, ReactiveFormsModule, SelectCategoryDirective]
 })
 export class CountriesListComponent {
 
@@ -33,12 +34,12 @@ export class CountriesListComponent {
     this.filteredRegion$
   ]).pipe(
     map(([countries, searchedForm, filteredRegion]) => {
-      if(filteredRegion === '' && searchedForm.search === '') {
+      if (filteredRegion === '' && searchedForm.search === '') {
         return countries
       } else {
         return countries
-        .filter(country => searchedForm.search !== '' ? country.name.toLowerCase().includes(searchedForm.search.toLowerCase()) : true)
-        .filter(country => filteredRegion !== '' ?  country.region === filteredRegion : true)
+          .filter(country => searchedForm.search !== '' ? country.name.toLowerCase().includes(searchedForm.search.toLowerCase()) : true)
+          .filter(country => filteredRegion !== '' ? country.region === filteredRegion : true)
       }
     }))
 
@@ -61,6 +62,18 @@ export class CountriesListComponent {
 
   onRegionClicked(region: string) {
     this._filteredRegionSubject.next(region)
+  }
+
+  private _isClickedSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isClicked$: Observable<boolean> = this._isClickedSubject.asObservable();
+
+  onFilterClicked() {
+    this.isClicked$.pipe(
+      take(1),
+      tap(isClicked => {
+        this._isClickedSubject.next(!isClicked)
+      })
+    ).subscribe()
   }
 
 }
