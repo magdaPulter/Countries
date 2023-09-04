@@ -1,11 +1,9 @@
-import { Directive } from '@angular/core';
+import { Directive} from '@angular/core';
 
 @Directive({
-  selector: '[appSelectCategory]',
+  selector: '[selectCategory]',
   standalone: true
 })
 export class SelectCategoryDirective {
-
-  constructor() { }
 
 }

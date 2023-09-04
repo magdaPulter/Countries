@@ -1,0 +1,61 @@
+.search-filter form{
+    width: 100%;
+}
+
+.search-filter input{
+    border: none;
+    width: 95%;
+    background-color: white
+}
+
+input:focus {
+    outline: none;
+  }
+
+.search-filter{
+    display: flex;
+    background-color: white;
+    width: 35vw;
+    height: 45px;
+}
+
+.search-filter mat-icon{
+    margin: 10px 15px;    
+}
+.search-filter form{
+    margin: 10px 5px;    
+}
+
+.region-filter {
+    display: flex;
+    border: none;
+    width: 100%;
+    background-color: white;
+    cursor: pointer;
+}
+
+.region-filter mat-icon{
+    padding: 5px;
+}
+
+.region-filter p{
+    padding: 10px;
+}
+
+.region-container{
+    width: 200px;
+    margin-bottom: 5px;
+    background-color: white;
+}
+
+.search-region-filter{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.region-container p{
+    cursor: pointer;
+    padding-left: 20px;
+}
