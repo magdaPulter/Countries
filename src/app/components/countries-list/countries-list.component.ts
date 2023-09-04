@@ -9,13 +9,15 @@ import { SelectCategoryDirective } from '../../directives/select-category.direct
 import { CountryModel } from '../../models/country.model';
 import { CountriesService } from '../../service/countries.service';
 import { FiltersComponent } from "../filters/filters.component";
+import { RouterModule } from '@angular/router';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
     selector: 'app-countries-list',
     templateUrl: './countries-list.component.html',
     styleUrls: ['./countries-list.component.css'],
     standalone: true,
-    imports: [CountryItemComponent, CommonModule, MatIconModule, MatInputModule, ReactiveFormsModule, SelectCategoryDirective, FiltersComponent]
+    imports: [CountryItemComponent, CommonModule, MatIconModule, MatInputModule, ReactiveFormsModule, SelectCategoryDirective, FiltersComponent, RouterModule, NavbarComponent]
 })
 export class CountriesListComponent {
 
@@ -59,7 +61,7 @@ export class CountriesListComponent {
     return region
   }
 
-  constructor(private _countriesService: CountriesService) { }
+  constructor(private _countriesService: CountriesService) {}
 
   regionSelected(region: string) {
     this._filteredRegionSubject.next(region)
