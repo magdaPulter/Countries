@@ -8,13 +8,14 @@ import { CountryItemComponent } from '../country-item/country-item.component';
 import { SelectCategoryDirective } from '../../directives/select-category.directive';
 import { CountryModel } from '../../models/country.model';
 import { CountriesService } from '../../service/countries.service';
+import { FiltersComponent } from "../filters/filters.component";
 
 @Component({
-  selector: 'app-countries-list',
-  templateUrl: './countries-list.component.html',
-  styleUrls: ['./countries-list.component.css'],
-  standalone: true,
-  imports: [CountryItemComponent, CommonModule, MatIconModule, MatInputModule, ReactiveFormsModule, SelectCategoryDirective]
+    selector: 'app-countries-list',
+    templateUrl: './countries-list.component.html',
+    styleUrls: ['./countries-list.component.css'],
+    standalone: true,
+    imports: [CountryItemComponent, CommonModule, MatIconModule, MatInputModule, ReactiveFormsModule, SelectCategoryDirective, FiltersComponent]
 })
 export class CountriesListComponent {
 
@@ -60,20 +61,8 @@ export class CountriesListComponent {
 
   constructor(private _countriesService: CountriesService) { }
 
-  onRegionClicked(region: string) {
+  regionSelected(region: string) {
     this._filteredRegionSubject.next(region)
-  }
-
-  private _isClickedSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  public isClicked$: Observable<boolean> = this._isClickedSubject.asObservable();
-
-  onFilterClicked() {
-    this.isClicked$.pipe(
-      take(1),
-      tap(isClicked => {
-        this._isClickedSubject.next(!isClicked)
-      })
-    ).subscribe()
   }
 
 }

@@ -1,0 +1,19 @@
+<div class="search-filter">
+    <mat-icon>search</mat-icon>
+    <form [formGroup]="form">
+        <input type="text" formControlName="search" placeholder="Search for a country...">
+    </form>
+</div>
+<div class="search-region-filter" (click)="onFilterClicked()">
+    <div class="region-container">
+        <button class="region-filter">
+            <p>Filter by region</p> 
+            <mat-icon>{{(isClicked$ | async) ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
+        </button>
+    </div>
+    <div *ngIf="isClicked$ | async" class="region-container">
+        <div *ngFor="let region of regions">
+            <p (click)="onRegionClicked(region)">{{region}}</p> 
+         </div>
+    </div>
+</div>
