@@ -9,23 +9,25 @@ import { CountryItemComponent } from './components/country-item/country-item.com
 import { MatCardModule } from '@angular/material/card';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PopulationPipe } from './pipes/population.pipe';
+import { CountryDetailComponent } from "./components/country-detail/country-detail.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-      ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    AppRoutingModule,
-    MainComponent,
-    CountryItemComponent,
-    CountriesListComponent,
-    MatCardModule,
-    NavbarComponent,
-    PopulationPipe
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        HttpClientModule,
+        BrowserModule,
+        AppRoutingModule,
+        MainComponent,
+        CountryItemComponent,
+        CountriesListComponent,
+        MatCardModule,
+        NavbarComponent,
+        PopulationPipe,
+        CountryDetailComponent
+    ]
 })
 export class AppModule { }

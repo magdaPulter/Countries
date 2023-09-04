@@ -1,4 +1,4 @@
-
+<app-navbar></app-navbar>
 <app-filters class="filters"
     [form]="form" 
     [regions]="(region$ | async)!"
@@ -9,6 +9,6 @@
     <app-country-item  
         *ngFor="let country of searchedCountry$ | async" 
         [country]="country"
-     >
+        [routerLink]="'/country/' + country.name">
     </app-country-item>
 </div>

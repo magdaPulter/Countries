@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { filter, map, Observable } from 'rxjs';
 import { CountryModel } from '../models/country.model';
 
 @Injectable({
@@ -16,4 +16,8 @@ export class CountriesService {
       map((countries => countries.filter(country => country.capital)))
     )
   }
+
+  getOne(name: string): Observable<CountryModel> {
+    return this.getAll().pipe(map(country => country.filter(c => c.name === name)[0]))
+  } 
 }

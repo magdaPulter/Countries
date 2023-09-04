@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
 import { CountriesListComponent } from '../countries-list/countries-list.component';
-import { CountriesService } from '../../service/countries.service';
+import { CountryDetailComponent } from '../country-detail/country-detail.component';
 
 
 @Component({
@@ -11,7 +9,7 @@ import { CountriesService } from '../../service/countries.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
   standalone: true,
-  imports: [CommonModule, CountriesListComponent]
+  imports: [CommonModule, CountriesListComponent, CountryDetailComponent]
 })
 export class MainComponent {
 }

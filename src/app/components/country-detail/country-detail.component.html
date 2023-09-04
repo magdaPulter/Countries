@@ -1,0 +1,12 @@
+<app-navbar></app-navbar>
+<button [routerLink]="''"><mat-icon>keyboard_backspace</mat-icon>Back</button>
+
+<ng-container *ngIf="countryDetail$ | async as country">
+    <img width="100%" mat-card-image src={{country.flags.svg}} alt="country flag">
+    <h3>{{country.name}}</h3>
+    <p>Native Name: {{country.nativeName}}</p>
+    <p>Population: <span>{{ country.population | population }}</span></p>
+    <p>Region: <span>{{country.region}}</span></p>
+    <p>Sub Region: <span>{{country.subregion}}</span></p>
+    <p>Capital: <span>{{country.capital}}</span></p>
+</ng-container>
