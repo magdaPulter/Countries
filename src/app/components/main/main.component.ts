@@ -14,19 +14,4 @@ import { CountriesService } from '../../service/countries.service';
   imports: [CommonModule, CountriesListComponent]
 })
 export class MainComponent {
-
-
-  constructor(private _countriesService: CountriesService) {
-  }
-
-
-
-
-  // constructor(private _countriesService: CountriesService) {
-  // this.form.controls['search'].valueChanges
-  // .pipe(tap(console.log)).subscribe()
-
-
-
-
 }
