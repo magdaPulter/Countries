@@ -6,6 +6,13 @@ export interface CountryModel {
     readonly borders: string[];
     readonly nativeName: string;
     readonly subregion: string;
+    readonly topLevelDomain: string[];
+    readonly  currencies: Array<{
+          name: string,
+    }>
+    readonly languages: Array<{
+        name: string,
+    }>
     readonly flags: {
         svg: string,
         png: string
