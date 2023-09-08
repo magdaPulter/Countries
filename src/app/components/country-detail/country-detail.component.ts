@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Observable, switchMap } from 'rxjs';
+import { combineLatest, map, Observable, switchMap } from 'rxjs';
 import { CountryModel } from '../../models/country.model';
 import { CountriesService } from '../../service/countries.service';
 import { CountryItemComponent } from "../country-item/country-item.component";
 import { PopulationPipe } from 'src/app/pipes/population.pipe';
 import {MatIconModule} from '@angular/material/icon'
 import { NavbarComponent } from "../navbar/navbar.component";
+import { CountryQueryModel } from 'src/app/querymodels/country.queryModel';
 
 @Component({
     selector: 'app-country-detail',
@@ -21,6 +22,21 @@ export class CountryDetailComponent {
   readonly countryDetail$: Observable<CountryModel> = this._activatedRoute.params.pipe(
     switchMap((params => this._countriesService.getOne(params['name'])))
   )
+
+//  readonly CountryDetailWithBorders$: Observable<any> = combineLatest([
+//     this.countryDetail$,
+//     this._countriesService.getAll()
+//   ]).pipe(
+//     map(([detail, countries]) => {
+//       return {
+//         ...detail,
+//         borders: detail.borders.map(borderShort => countries.filter(country => borderShort === country.alpha3Code))
+//         .map(bortderCountries => bortderCountries.map(country => country.name))
+//       }
+//     })
+//   )
+
+
 
   constructor(private _countriesService: CountriesService, private _activatedRoute: ActivatedRoute) {
   }

@@ -1,6 +1,5 @@
 <app-navbar></app-navbar>
 
-
 <ng-container *ngIf="countryDetail$ | async as country">
     <div class="main-container">
         <button [routerLink]="''"><mat-icon>keyboard_backspace</mat-icon>Back</button>
@@ -19,10 +18,8 @@
                 <p>Top Level Domain: <span>{{country.topLevelDomain}}</span></p>
                 <p>Currencies: <span *ngFor="let currency of country.currencies"> {{ currency.name }}</span></p>
                 <p>Languages: <span *ngFor="let language of country.languages"> {{ language.name }}</span></p>
-                <p>Border Countries: <button *ngFor="let border of country.borders"> {{ border }}</button></p>
-
+                <p>Border Countries: <button *ngFor="let border of country.borders" [routerLink]="'/country/' + border" > {{ border }}</button></p>
             </div>
         </div>
-
     </div>
 </ng-container>
