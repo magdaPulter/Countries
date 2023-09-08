@@ -1,7 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;900&family=Josefin+Sans&family=Kumbh+Sans:wght@400;500&family=Lato:wght@300;900&family=Manrope:wght@600;700;800&family=Open+Sans:wght@300&family=Overpass&family=Poppins:ital,wght@0,400;1,200&family=Roboto:wght@300&display=swap');
+
 .navbar{
-    padding: 30px 60px 10px 60px;
+    background-color: hsl(0, 0%, 100%);
+    padding: 20px 60px 0px 60px;
     display: flex;
     justify-content: space-between;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+.navbar h2{
+    font-weight: 800;
+}
+
+.navbar h4{
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+mat-icon{
+    transform: rotate(180deg);
 }
 
 .nav-right{
