@@ -3,7 +3,7 @@ export interface CountryQueryModel {
     readonly population: number;
     readonly region: string;
     readonly capital: string;
-    readonly borders: string[];
+    readonly borders: string[] | null;
     readonly nativeName: string;
     readonly subregion: string;
     readonly topLevelDomain: string[];
