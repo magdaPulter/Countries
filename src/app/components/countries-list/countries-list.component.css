@@ -3,11 +3,14 @@
     justify-content: space-between;
     align-items: flex-start;
     position: relative;
+    margin-top: 40px;
+    padding: 0 40px;
 }
 
 .country-list{
+    padding: 0 40px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     z-index: 0;
 }
