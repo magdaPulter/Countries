@@ -1,5 +1,6 @@
-h3{
+h1{
     font-weight: bold;
+    font-size: 2rem;
 }
 
 span{
@@ -8,13 +9,50 @@ span{
 }
 
 img{
-    width: 550px;
+    width: 500px;
 }
 
 .main-container{
-    margin: 150px;
+    margin: 0 150px;
 }
 
 .main-content{
     display: flex;
+    align-items: center;
+}
+
+.right-container{
+    width: 100%;
+    margin: 50px;
+}
+
+.country-info{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0px 50px 0px;
+}
+
+.btn-back{
+    display: flex;
+    align-items: center;
+    margin: 50px 0;
+    padding: 0 45px 0 35px;
+
+}
+
+.btn-border{
+    margin: 5px;
+    padding: 5px 10px;
+}
+
+.btn-back h4{
+    margin: 10px 0 10px 10px;    
+}
+
+.btn{
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 0 5px 5px rgba(0,0,0,0.06);
 }

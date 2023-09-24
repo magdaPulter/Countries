@@ -2,23 +2,34 @@
 
 <ng-container *ngIf="CountryDetailWithBorders$ | async as country">
     <div class="main-container">
-        <button [routerLink]="''"><mat-icon>keyboard_backspace</mat-icon>Back</button>
+        <button class="btn btn-back" [routerLink]="''">
+            <mat-icon>keyboard_backspace</mat-icon>
+            <h4>Back</h4>
+        </button>
 
         <div class="main-content">
             <div class="left-container">
                 <img width="100%" mat-card-image src={{country.flags.svg}} alt="country flag">
             </div>
             <div class="right-container">
-                <h3>{{country.name}}</h3>
-                <p>Native Name: {{country.nativeName}}</p>
-                <p>Population: <span>{{ country.population | population }}</span></p>
-                <p>Region: <span>{{country.region}}</span></p>
-                <p>Sub Region: <span>{{country.subregion}}</span></p>
-                <p>Capital: <span>{{country.capital}}</span></p>
-                <p>Top Level Domain: <span>{{country.topLevelDomain}}</span></p>
-                <p>Currencies: <span *ngFor="let currency of country.currencies"> {{ currency.name }}</span></p>
-                <p>Languages: <span *ngFor="let language of country.languages"> {{ language.name }}</span></p>
-                <p>Border Countries: <button *ngFor="let border of country.borders" [routerLink]="'/country/' + border" > {{ border }}</button></p>
+                <h1>{{country.name}}</h1>
+                <div class="country-info">
+                    <div class="left-info">
+                        <p>Native Name: <span>{{country.nativeName}}</span></p>
+                        <p>Population: <span>{{ country.population | population }}</span></p>
+                        <p>Region: <span>{{country.region}}</span></p>
+                        <p>Sub Region: <span>{{country.subregion}}</span></p>
+                        <p>Capital: <span>{{country.capital}}</span></p>
+                    </div>
+                    <div class="right-info">
+                        <p>Top Level Domain: <span>{{country.topLevelDomain}}</span></p>
+                        <p>Currencies: <span *ngFor="let currency of country.currencies"> {{ currency.name }}</span></p>
+                        <p>Languages: <span *ngFor="let language of country.languages"> {{ language.name }}</span></p>
+                    </div>
+                </div>
+                <p>Border Countries: <button class="btn btn-border" *ngFor="let border of country.borders" [routerLink]="'/country/' + border">
+                        <span>{{ border }}</span></button>
+                </p>
             </div>
         </div>
     </div>
