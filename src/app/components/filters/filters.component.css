@@ -73,3 +73,13 @@ input:focus {
     cursor: pointer;
     padding-left: 20px;
 }
+
+@media(max-width: 480px){
+    .search-filter{
+        width: 75vw;
+    }
+    .search-region-filter{
+        position: static;
+        margin: 20px 0px;
+    }
+}

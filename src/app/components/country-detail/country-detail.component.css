@@ -37,7 +37,6 @@ img{
     align-items: center;
     margin: 50px 0;
     padding: 0 45px 0 35px;
-
 }
 
 .btn-border{
@@ -55,4 +54,22 @@ img{
     border: none;
     border-radius: 3px;
     box-shadow: 0 0 5px 5px rgba(0,0,0,0.06);
+}
+
+@media(max-width: 480px){
+    .main-content{
+        flex-direction: column;
+    }
+    .country-info{
+        flex-direction: column; 
+    }
+    img{
+        width: 85vw;
+    }
+    .right-container{
+        width: 85vw;
+    }
+    .left-info{
+        margin-bottom: 20px;
+    }
 }
