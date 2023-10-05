@@ -4,9 +4,7 @@ This is a solution to the challenge - Countries (https://www.frontendmentor.io/c
 
 ## Netlify
 
-See the page on Netlify:
-https://deploy-preview-10--cheery-crumble-51f43a.netlify.app/
-
+See the page on Netlify: [Countries](https://cheery-crumble-51f43a.netlify.app/)
 
 ## Technologies
 
