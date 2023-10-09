@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { BehaviorSubject, Observable, combineLatest, map, shareReplay, startWith, take, tap } from 'rxjs';
+import { BehaviorSubject, Observable, combineLatest, map, shareReplay, startWith, take, tap, switchMap } from 'rxjs';
 import { CountryItemComponent } from '../country-item/country-item.component';
 import { SelectCategoryDirective } from '../../directives/select-category.directive';
 import { CountryModel } from '../../models/country.model';
 import { CountriesService } from '../../service/countries.service';
 import { FiltersComponent } from "../filters/filters.component";
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
@@ -31,18 +31,24 @@ export class CountriesListComponent {
   private _filteredRegionSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
   public filteredRegion$: Observable<string> = this._filteredRegionSubject.asObservable();
 
+  readonly selectedRegionFromQueryParams$: Observable<string> = this._activatedRoute.queryParams.pipe(
+    map((queryParams) => {
+      return queryParams['region']
+    })
+  )
+
   readonly searchedCountry$: Observable<CountryModel[]> = combineLatest([
     this.countries$,
     this.form.valueChanges.pipe(startWith({ search: '' })),
-    this.filteredRegion$
+    this.selectedRegionFromQueryParams$
   ]).pipe(
     map(([countries, searchedForm, filteredRegion]) => {
-      if (filteredRegion === '' && searchedForm.search === '') {
+      if (filteredRegion === undefined && searchedForm.search === '' ) {
         return countries
       } else {
         return countries
           .filter(country => searchedForm.search !== '' ? country.name.toLowerCase().includes(searchedForm.search.toLowerCase()) : true)
-          .filter(country => filteredRegion !== '' ? country.region === filteredRegion : true)
+          .filter(country => filteredRegion !== undefined ? country.region === filteredRegion : true)
       }
     }))
 
@@ -61,10 +67,13 @@ export class CountriesListComponent {
     return region
   }
 
-  constructor(private _countriesService: CountriesService) {}
+  constructor(private _countriesService: CountriesService, private _router: Router, private _activatedRoute: ActivatedRoute) {}
+
 
   regionSelected(region: string) {
-    this._filteredRegionSubject.next(region)
+    this._router.navigate(
+      [],
+      { queryParams: { region: region } }
+      )
   }
-
 }
