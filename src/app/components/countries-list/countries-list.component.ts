@@ -22,22 +22,17 @@ import { NavbarComponent } from "../navbar/navbar.component";
 export class CountriesListComponent implements AfterViewInit{
 
   readonly countries$: Observable<CountryModel[]> = this._countriesService.getAll()
-    .pipe(
-      shareReplay(1)
-    )
+    .pipe(shareReplay(1))
 
   readonly form: FormGroup = new FormGroup({
     search: new FormControl('')
   })
 
-  private _searchValuesSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  public searchValues$: Observable<string> = this._searchValuesSubject.asObservable();
+  private _filteredRegionSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public filteredRegion$: Observable<string> = this._filteredRegionSubject.asObservable();
 
 
-  readonly searchValuesQueryParams$: Observable<Params> = this._activatedRoute.queryParams
-  .pipe(
-    shareReplay(1)
-  )
+  readonly searchValuesQueryParams$: Observable<Params> = this._activatedRoute.queryParams.pipe(shareReplay(1))
 
   readonly searchedCountry$: Observable<CountryModel[]> = combineLatest([
     this.countries$,
@@ -79,7 +74,7 @@ export class CountriesListComponent implements AfterViewInit{
         ))
     ).subscribe()
 
-    this.searchValues$.pipe(
+    this.searchValuesQueryParams$.pipe(
       tap(searchValue => {
         this.form.controls['search']?.patchValue(searchValue['search'])
       })
