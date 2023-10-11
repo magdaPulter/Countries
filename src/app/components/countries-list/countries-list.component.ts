@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,36 +19,37 @@ import { NavbarComponent } from "../navbar/navbar.component";
     standalone: true,
     imports: [CountryItemComponent, CommonModule, MatIconModule, MatInputModule, ReactiveFormsModule, SelectCategoryDirective, FiltersComponent, RouterModule, NavbarComponent]
 })
-export class CountriesListComponent {
+export class CountriesListComponent implements AfterViewInit{
 
   readonly countries$: Observable<CountryModel[]> = this._countriesService.getAll()
-    .pipe(shareReplay(1))
+    .pipe(
+      shareReplay(1)
+    )
 
   readonly form: FormGroup = new FormGroup({
     search: new FormControl('')
   })
 
-  private _filteredRegionSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  public filteredRegion$: Observable<string> = this._filteredRegionSubject.asObservable();
+  private _searchValuesSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public searchValues$: Observable<string> = this._searchValuesSubject.asObservable();
 
-  readonly selectedRegionFromQueryParams$: Observable<string> = this._activatedRoute.queryParams.pipe(
-    map((queryParams) => {
-      return queryParams['region']
-    })
+
+  readonly searchValuesQueryParams$: Observable<Params> = this._activatedRoute.queryParams
+  .pipe(
+    shareReplay(1)
   )
 
   readonly searchedCountry$: Observable<CountryModel[]> = combineLatest([
     this.countries$,
-    this.form.valueChanges.pipe(startWith({ search: '' })),
-    this.selectedRegionFromQueryParams$
+    this.searchValuesQueryParams$
   ]).pipe(
-    map(([countries, searchedForm, filteredRegion]) => {
-      if (filteredRegion === undefined && searchedForm.search === '' ) {
+    map(([countries, searchValues]) => {
+      if (searchValues['region'] === undefined && searchValues['search'] === undefined ) {
         return countries
       } else {
         return countries
-          .filter(country => searchedForm.search !== '' ? country.name.toLowerCase().includes(searchedForm.search.toLowerCase()) : true)
-          .filter(country => filteredRegion !== undefined ? country.region === filteredRegion : true)
+          .filter(country => searchValues['search'] !== undefined ? country.name.toLowerCase().includes(searchValues['search'].toLowerCase()) : true)
+          .filter(country => searchValues['region'] !== undefined ? country.region === searchValues['region'] : true)
       }
     }))
 
@@ -69,11 +70,26 @@ export class CountriesListComponent {
 
   constructor(private _countriesService: CountriesService, private _router: Router, private _activatedRoute: ActivatedRoute) {}
 
+  ngAfterViewInit(): void {
+    this.form.get('search')?.valueChanges.pipe(
+      tap(searchValue => 
+        this._router.navigate(
+        [],
+        { queryParams: { search: searchValue } , queryParamsHandling: 'merge' }
+        ))
+    ).subscribe()
+
+    this.searchValues$.pipe(
+      tap(searchValue => {
+        this.form.controls['search']?.patchValue(searchValue['search'])
+      })
+    ).subscribe()
+  }
 
   regionSelected(region: string) {
     this._router.navigate(
       [],
-      { queryParams: { region: region } }
+      { queryParams: { region: region } , queryParamsHandling: 'merge' }
       )
   }
 }
