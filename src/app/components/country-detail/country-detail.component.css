@@ -1,3 +1,8 @@
+.detail{
+    height: 100%;
+}
+
+
 h1{
     font-weight: bold;
     font-size: 2rem;
@@ -5,15 +10,15 @@ h1{
 
 span{
     font-weight: 20;
-    color: rgb(143, 141, 141);
 }
 
 img{
     width: 500px;
+    max-height: 370px;
 }
 
 .main-container{
-    margin: 0 150px;
+    margin: 0px 150px;
 }
 
 .main-content{
@@ -49,7 +54,6 @@ img{
 }
 
 .btn{
-    background-color: white;
     cursor: pointer;
     border: none;
     border-radius: 3px;
@@ -71,5 +75,8 @@ img{
     }
     .left-info{
         margin-bottom: 20px;
+    }
+    .detail{
+        height: 1100px;
     }
 }

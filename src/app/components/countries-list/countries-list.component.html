@@ -1,15 +1,17 @@
-<app-navbar></app-navbar>
-
-<app-filters class="filters"
-    [form]="form" 
-    [regions]="(region$ | async)!"
-        (regionClicked)="regionSelected($event)">
-</app-filters>
-
-<div class="country-list"> 
-    <app-country-item  
-        *ngFor="let country of searchedCountry$ | async" 
-        [country]="country"
-        [routerLink]="'/country/' + country.name">
-    </app-country-item>
+<div class="country-list-container">
+    <app-navbar></app-navbar>
+    <app-filters class="filters"
+        [form]="form" 
+        [regions]="(region$ | async)!"
+            (regionClicked)="regionSelected($event)">
+    </app-filters>
+    
+    <div class="country-list"> 
+        <app-country-item  
+            *ngFor="let country of searchedCountry$ | async" 
+            [country]="country"
+            [routerLink]="'/country/' + country.name">
+        </app-country-item>
+    </div>
 </div>
+

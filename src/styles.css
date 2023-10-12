@@ -2,4 +2,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 html, body { height: 100%; }
-body { margin: 0; font-family: 'Poppins', sans-serif; background-color:hsl(0, 0%, 98%);}
+body { margin: 0; font-family: 'Poppins', sans-serif; }
+
+
+
+.dark-mode app-root {
+    background-color:hsl(207, 26%, 17%);
+}
+
+.dark-mode .country-list, .dark-mode .filters, .dark-mode .detail, .dark-mode .country-list-container {
+    background-color:hsl(207, 26%, 17%);
+    color:  hsl(0, 0%, 100%)
+
+}
+
+.dark-mode .navbar, .dark-mode mat-card.card, .dark-mode button, .dark-mode .search-filter input, .dark-mode .search-filter, .dark-mode .region-filter, .dark-mode .region-container {
+    background-color:  hsl(209, 23%, 22%);
+    color:  hsl(0, 0%, 100%)
+}
+
+.light-mode .country-list, .light-mode .filters, .light-mode .detail, .dark-mode .country-list-container{
+    background-color:hsl(0, 0%, 98%);
+    color: hsl(200, 15%, 8%)
+}
+
+.light-mode .navbar, .light-mode mat-card.card, .light-mode button, .light-mode .search-filter input, .light-mode .search-filter, .light-mode .region-filter, .light-mode .region-container {
+    background-color:  hsl(0, 0%, 100%);
+    color:  hsl(200, 15%, 8%);
+}
+
+
+/* 
+- Dark Blue (Dark Mode Elements): hsl(209, 23%, 22%)
+- Very Dark Blue (Dark Mode Background): hsl(207, 26%, 17%)
+- Very Dark Blue (Light Mode Text): hsl(200, 15%, 8%)
+- Dark Gray (Light Mode Input): hsl(0, 0%, 52%)
+- Very Light Gray (Light Mode Background): hsl(0, 0%, 98%)
+- White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%) */
