@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;900&family=Josefin+Sans&family=Kumbh+Sans:wght@400;500&family=Lato:wght@300;900&family=Manrope:wght@600;700;800&family=Open+Sans:wght@300&family=Overpass&family=Poppins:ital,wght@0,400;1,200&family=Roboto:wght@300&display=swap');
 
 .navbar{
-    background-color: hsl(0, 0%, 100%);
     padding: 20px 60px 0px 60px;
     display: flex;
     justify-content: space-between;
