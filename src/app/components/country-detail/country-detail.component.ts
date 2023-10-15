@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { combineLatest, map, Observable, switchMap } from 'rxjs';
+import { BehaviorSubject, combineLatest, map, Observable, shareReplay, switchMap } from 'rxjs';
 import { CountryModel } from '../../models/country.model';
 import { CountriesService } from '../../service/countries.service';
 import { CountryItemComponent } from "../country-item/country-item.component";
@@ -44,9 +44,6 @@ export class CountryDetailComponent {
       }
     })
   )
-
-
-
   constructor(private _countriesService: CountriesService, private _activatedRoute: ActivatedRoute) {
   }
 }
