@@ -10,13 +10,13 @@ body { margin: 0; font-family: 'Poppins', sans-serif; }
     background-color:hsl(207, 26%, 17%);
 }
 
-.dark-mode .country-list, .dark-mode .filters, .dark-mode .detail, .dark-mode .country-list-container {
+.dark-mode .country-list, .dark-mode .filters, .dark-mode .detail, .dark-mode .country-list-container{
     background-color:hsl(207, 26%, 17%);
     color:  hsl(0, 0%, 100%)
 
 }
 
-.dark-mode .navbar, .dark-mode mat-card.card, .dark-mode button, .dark-mode .search-filter input, .dark-mode .search-filter, .dark-mode .region-filter, .dark-mode .region-container {
+.dark-mode .navbar, .dark-mode mat-card.card, .dark-mode button, .dark-mode .search-filter input, .dark-mode .search-filter, .dark-mode .region-filter, .dark-mode .region-container, .dark-mode mat-icon {
     background-color:  hsl(209, 23%, 22%);
     color:  hsl(0, 0%, 100%)
 }

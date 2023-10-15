@@ -1,11 +1,10 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, HostBinding, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { BehaviorSubject, Observable, combineLatest, map, shareReplay, startWith, take, tap, switchMap } from 'rxjs';
+import { BehaviorSubject, Observable, combineLatest, map, shareReplay, tap } from 'rxjs';
 import { CountryItemComponent } from '../country-item/country-item.component';
-import { SelectCategoryDirective } from '../../directives/select-category.directive';
 import { CountryModel } from '../../models/country.model';
 import { CountriesService } from '../../service/countries.service';
 import { FiltersComponent } from "../filters/filters.component";
@@ -17,7 +16,7 @@ import { NavbarComponent } from "../navbar/navbar.component";
     templateUrl: './countries-list.component.html',
     styleUrls: ['./countries-list.component.css'],
     standalone: true,
-    imports: [CountryItemComponent, CommonModule, MatIconModule, MatInputModule, ReactiveFormsModule, SelectCategoryDirective, FiltersComponent, RouterModule, NavbarComponent]
+    imports: [CountryItemComponent, CommonModule, MatIconModule, MatInputModule, ReactiveFormsModule, FiltersComponent, RouterModule, NavbarComponent]
 })
 export class CountriesListComponent implements AfterViewInit{
 

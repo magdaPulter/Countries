@@ -1,9 +1,8 @@
 <div class="navbar">
     <h2 class="nav-left">Where in the world</h2>
-    <div class="nav-right">
-        <mat-icon>brightness_3</mat-icon>
-        <h4>Dark Mode</h4>
-        <!-- <h4>Light Mode</h4> -->
+    <div class="nav-right" (click)="onModeClick()">
+        <mat-icon>{{(isClicked$ | async) ? 'wb_sunny' : 'brightness_3'}}</mat-icon> 
+        <h4>{{(isClicked$ | async) ? 'Light Mode' : 'Dark Mode'}}</h4>
     </div>
 </div>
 
